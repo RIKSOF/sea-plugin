@@ -84,4 +84,4 @@ class SeaPlugin {
   }
 }
 
-export default SeaPlugin;
+module.exports = SeaPlugin;
