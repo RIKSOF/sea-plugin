@@ -1,0 +1,35 @@
+# Visual studio files.
+.vs/
+.vscode/
+
+# node-waf configuration
+.lock-wscript
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Ignore distribution folder.
+dist
+
+# Ignore .DS_Store files on mac
+.DS_Store
+
+# Ignore the cache folder
+cache
+
+# Lock files and repo data.
+yarn.lock
+.pnp.cjs
+.pnp.loader.mjs
+.yarn/
+
+# Dist folder
+dist
+test_results

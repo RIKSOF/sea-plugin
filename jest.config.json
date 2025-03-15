@@ -1,0 +1,9 @@
+{
+  "roots": [
+    "tests"
+  ],
+  "testMatch": [
+    "**/**/*.spec.js"
+  ],
+  "testTimeout": 1000000
+}
