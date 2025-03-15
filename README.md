@@ -132,4 +132,4 @@ This approach ensures your executables are properly signed and trusted across mu
 
 ---
 
-© 2024 SeaPlugin. All rights reserved.
+© 2025 RIKSOF, Inc. All rights reserved.
