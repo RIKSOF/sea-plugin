@@ -1,7 +1,14 @@
 # sea-webpack-plugin
 
-[![RIKSOF, Inc](https://d37up8ah6d53fh.cloudfront.net/default/1.0.2-a4413db/builds/assets/common/images/navs/rs-logo-old.png)](https://www.riksof.com/)  
-[![s2a](https://d4i3gppt7py8y.cloudfront.net/default/1.0.1-c6907ac/builds/assets/common/images/navs/logo-s2a.png)](https://www.s2a.io/)  
+<div align="center">
+  <a href="https://www.riksof.com/"><img width="100" height="100" src="https://d37up8ah6d53fh.cloudfront.net/default/1.0.2-a4413db/builds/assets/common/images/navs/rs-logo-old.png" alt="RIKSOF, Inc"></a>
+  <a href="https://www.s2a.io"><img width="100" height="100" src="https://d4i3gppt7py8y.cloudfront.net/default/1.0.1-c6907ac/builds/assets/common/images/navs/logo-s2a.png" alt="s2a - AI Powered Low Code Development Platform"></a>
+</div>
+
+[![npm][npm]][npm-url]
+[![node][node]][node-url]
+[![discussion][discussion]][discussion-url]
+[![size][size]][size-url]
 
 *A Webpack plugin for cross-platform generation of Node's SEA (Single executable applications).*
 
