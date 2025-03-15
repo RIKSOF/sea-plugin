@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.2.0...v0.3.0) (2025-03-15)
+
+### Bug Fixes
+
+* Some more build fixes to get commonjs modules to work properly
+
 ## [0.2.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.1.0...v0.2.0) (2025-03-15)
 
 ### Bug Fixes

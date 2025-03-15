@@ -1,6 +1,6 @@
 {
   "name": "sea-webpack-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Webpack plugin to generate a Node SEA executable for all platforms.",
   "repository": "https://github.com/RIKSOF/sea-webpack-plugin",
   "homepage": "https://github.com/RIKSOF/sea-webpack-plugin",
