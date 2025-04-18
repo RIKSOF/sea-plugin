@@ -1,14 +1,14 @@
-# sea-webpack-plugin
+# sea-plugin
 
 <div align="center">
   <a href="https://www.riksof.com/"><img width="100" height="100" src="https://d37up8ah6d53fh.cloudfront.net/default/1.0.2-a4413db/builds/assets/common/images/navs/rs-logo-old.png" alt="RIKSOF, Inc"></a>
   <a href="https://www.s2a.io"><img width="82" height="100" src="https://d4i3gppt7py8y.cloudfront.net/default/1.0.1-c6907ac/builds/assets/common/images/navs/logo-s2a.png" alt="s2a - AI Powered Low Code Development Platform"></a>
 </div>
 
-*A Webpack plugin for cross-platform generation of Node's SEA (Single executable applications).*
+*A Webpack / Esbuild plugin for cross-platform generation of Node's SEA (Single executable applications).*
 
 ## 📖 Overview
-The sea-webpack-plugin is a Webpack plugin designed to create Node’s single executable applications (SEA), offering cross-platform builds (Windows, macOS, and Linux) from any environment. It streamlines the process of bundling Node.js apps into a single file—automatically downloading the required Node.js binary, generating a SEA configuration file, and embedding assets into the final executable.
+The sea-plugin is a Webpack / Esbuild plugin designed to create Node’s single executable applications (SEA), offering cross-platform builds (Windows, macOS, and Linux) from any environment. It streamlines the process of bundling Node.js apps into a single file—automatically downloading the required Node.js binary, generating a SEA configuration file, and embedding assets into the final executable.
 
 ## ✨ Features
 - 🏗 **Automates SEA Configuration** – Generates `sea-config.json` for packaging Node.js applications.
@@ -17,25 +17,25 @@ The sea-webpack-plugin is a Webpack plugin designed to create Node’s single ex
 - 🏆 **Multi-Platform Support** – Supports Windows, macOS, and Linux builds.
 
 ## 🚀 Installation
-Install sea-webpack-plugin using npm or yarn:
+Install sea-plugin using npm or yarn:
 
 ```sh
-npm install --save-dev sea-webpack-plugin
+npm install --save-dev sea-plugin
 ```
 
 or
 
 ```sh
-yarn add --dev sea-webpack-plugin
+yarn add --dev sea-plugin
 ```
 
 ## ⚙️ Usage
 
 ### **Basic Webpack Configuration**
-Add sea-webpack-plugin to your Webpack configuration:
+Add sea-plugin to your Webpack configuration:
 
 ```javascript
-import SeaWebpackPlugin from 'sea-webpack-plugin';
+import { SeaWebpackPlugin } from 'sea-plugin';
 import path from 'path';
 
 export default {
@@ -69,6 +69,49 @@ export default {
 ```
 The following apps will be published to the dist folder: *my-app-win-x64.exe*, *my-app-linux-x64*, *my-app-darwin-x64* and *my-app-darwin-arm64*.
 
+### **Basic Esbuild Configuration**
+Add sea-plugin to your Esbuild configuration:
+
+```javascript
+// build.mjs  (run with:  node --experimental-modules build.mjs)
+import { build } from 'esbuild';
+import { SeaEsbuildPlugin } from 'sea-plugin';
+import path from 'path';
+
+// Common output folder
+const outDir = path.resolve('dist');
+
+await build({
+  entryPoints: ['./src/index.js'],
+  outfile: path.join(outDir, 'bundle.js'),   // single‑file bundle
+  bundle: true,
+  platform: 'node',
+  format: 'esm',   // or 'cjs' if your project needs it
+  plugins: [
+    SeaEsbuildPlugin({
+      name: 'my-app',
+      nodeVersion: '23.9.0',
+      os: ['win-x64', 'linux-x64', 'darwin-x64', 'darwin-arm64'],
+      assets: {
+        'assets/icon.jpg': {
+          src: 'src/assets/icon.jpg',
+          options: {
+            /* any custom options */
+          }
+        },
+        'assets/logo.png': {
+          src: 'src/assets/logo.png',
+          options: {
+            /* any custom options */
+          }
+        }
+      }
+    })
+  ]
+});
+```
+The following apps will be published to the dist folder: *my-app-win-x64.exe*, *my-app-linux-x64*, *my-app-darwin-x64* and *my-app-darwin-arm64*.
+
 ## 🔧 Configuration Options
 
 | Option        | Type               | Description |
@@ -84,7 +127,7 @@ This project is licensed under the MIT License.
 
 
 ## 🤖 AI Assisted Development
-sea-webpack-plugin was developed with the help of AI, enabling the team to complete a fully functional release in just 8 hours.
+sea-plugin was developed with the help of AI, enabling the team to complete a fully functional release in just 8 hours.
 
 ## 🐳 Using the Docker (Code-Signing)
 This plugin ships with a Dockerfile to facilitate cross-plafrom code signing for your SEA builds. You can find this Docker configurations in the `code-sign` folder:

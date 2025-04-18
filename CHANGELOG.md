@@ -1,3 +1,13 @@
+## [0.4.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.3.0...v0.4.0) (2025-04-18)
+
+### Features
+* Added support for Esbuild
+* This package is renamed to sea-plugin as it now supports both Webpack and Esbuil
+
+### Bug Fixes
+
+* Some more build fixes to get commonjs modules to work properly
+
 ## [0.3.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.2.0...v0.3.0) (2025-03-15)
 
 ### Bug Fixes

@@ -1,7 +1,3 @@
-export type AssetOption = {
-  [key: string]: {
-    src: string;
-    options: any;
-  };
-};
-export type Compiler = import('webpack').Compiler;
+import { SeaWebpackPlugin } from './webpack.js';
+import { SeaEsbuildPlugin } from './esbuild.js';
+export { SeaWebpackPlugin, SeaEsbuildPlugin };

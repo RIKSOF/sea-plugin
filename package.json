@@ -1,10 +1,10 @@
 {
-  "name": "sea-webpack-plugin",
-  "version": "0.3.0",
-  "description": "A Webpack plugin to generate a Node SEA executable for all platforms.",
-  "repository": "https://github.com/RIKSOF/sea-webpack-plugin",
-  "homepage": "https://github.com/RIKSOF/sea-webpack-plugin",
-  "bugs": "https://github.com/RIKSOF/sea-webpack-plugin/issues",
+  "name": "sea-plugin",
+  "version": "0.4.0",
+  "description": "A Webpack/Esbuild plugin to generate a Node SEA executable for all platforms.",
+  "repository": "https://github.com/RIKSOF/sea-plugin",
+  "homepage": "https://github.com/RIKSOF/sea-plugin",
+  "bugs": "https://github.com/RIKSOF/sea-plugin/issues",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "engines": {
@@ -35,6 +35,7 @@
     "@types/webpack": "5.28.5",
     "babel-loader": "10.0.0",
     "cross-env": "7.0.3",
+    "esbuild": "0.25.2",
     "jest": "29.7.0",
     "prettier": "3.5.3",
     "typescript": "5.8.2",
@@ -48,7 +49,8 @@
     "cross-platform",
     "cli",
     "plugin",
-    "webpack"
+    "webpack",
+    "esbuild"
   ],
   "author": "RIKSOF, Inc",
   "license": "MIT",
