@@ -1,6 +1,6 @@
 {
   "name": "sea-plugin",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A Webpack/Esbuild plugin to generate a Node SEA executable for all platforms.",
   "repository": "https://github.com/RIKSOF/sea-plugin",
   "homepage": "https://github.com/RIKSOF/sea-plugin",
@@ -54,5 +54,5 @@
   ],
   "author": "RIKSOF, Inc",
   "license": "MIT",
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.9.2"
 }

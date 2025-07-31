@@ -51,13 +51,15 @@ export default {
       os: ['win-x64', 'linux-x64', 'darwin-x64', 'darwin-arm64']
       assets: {
         'assets/icon.jpg': { 
-          src: 'src/assets/icon.jpg', 
+          src: 'src/assets/icon_win.jpg',
+          os: ['win-x64'],
           options: { 
             /*any custom options */
           } 
         },
         'assets/logo.png': { 
-          src: 'src/assets/logo.png',
+          src: 'src/assets/logo_linux.png',
+          os: ['linux-x64'],
           options: { 
             /*any custom options */
           }

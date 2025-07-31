@@ -1,3 +1,8 @@
+## [0.5.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.4.0...v0.5.0) (2025-04-18)
+
+### Features
+* Added support for OS specific assets
+
 ## [0.4.0](https://github.com/RIKSOF/sea-webpack-plugin/compare/v0.3.0...v0.4.0) (2025-04-18)
 
 ### Features

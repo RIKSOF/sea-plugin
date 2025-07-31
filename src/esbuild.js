@@ -49,27 +49,28 @@ export function SeaEsbuildPlugin(options = {nodeVersion: '23.9.0', os: []}) {
           const cacheDir = cachePath || join(outputPath, '.node_cache');
 
           const configName = name || parse(outfileName).name;
-          const configFilePath = resolve(outputPath, 'sea-config.json');
           const blobFilePath = resolve(outputPath, `${configName}.blob`);
 
-          // assets manifest
-          const assetsManifest = await generateAssetsManifest(outputPath, assets);
-
-          await writeFile(
-            configFilePath,
-            JSON.stringify(
-              {
-                main: outfileName,
-                output: `${configName}.blob`,
-                disableExperimentalSEAWarning: true,
-                assets: assetsManifest,
-              },
-              null,
-              2,
-            ),
-          );
-
           for (const platform of platforms) {
+            const configFilePath = resolve(outputPath, `sea-config-${platform}.json`);
+
+            // assets manifest
+            const assetsManifest = await generateAssetsManifest(outputPath, assets, platform);
+
+            await writeFile(
+              configFilePath,
+              JSON.stringify(
+                {
+                  main: outfileName,
+                  output: `${configName}.blob`,
+                  disableExperimentalSEAWarning: true,
+                  assets: assetsManifest,
+                },
+                null,
+                2,
+              ),
+            );
+
             const isWin = platform.startsWith('win');
             const isMac = platform.startsWith('darwin');
             const exeFilePath = resolve(outputPath, `${configName}-${platform}${isWin ? '.exe' : ''}`);
@@ -80,7 +81,7 @@ export function SeaEsbuildPlugin(options = {nodeVersion: '23.9.0', os: []}) {
             await copyFile(nodePath, exeFilePath);
             await chmod(exeFilePath, 0o755);
 
-            await execPromise('node --experimental-sea-config sea-config.json', { cwd: outputPath });
+            await execPromise(`node --experimental-sea-config sea-config-${platform}.json`, { cwd: outputPath });
             const blobBuffer = await readFile(blobFilePath);
 
             await inject(exeFilePath, 'NODE_SEA_BLOB', blobBuffer, {
