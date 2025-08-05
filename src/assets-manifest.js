@@ -1,5 +1,5 @@
 import { writeFile } from 'fs/promises';
-import { isAbsolute, resolve } from 'path';
+import { isAbsolute, relative, resolve } from 'path';
 
 /**
  * A single asset entry.
@@ -22,8 +22,10 @@ async function generateAssetsManifest(outputPath, assetsJson, platform) {
   // 1️⃣  Filter for the requested platform.
   const platformAssets = Object.fromEntries(
     Object.entries(assetsJson).filter(
-      ([, asset]) => Array.isArray(asset.os) && asset.os.includes(platform)
-    )
+      ([, asset]) =>
+        !asset.os ||                                // ◄ NEW: universal asset
+        (Array.isArray(asset.os) && asset.os.includes(platform))
+    ),
   );
 
   // 2️⃣  Deep-copy so we can mutate safely.
@@ -31,11 +33,14 @@ async function generateAssetsManifest(outputPath, assetsJson, platform) {
 
   // 3️⃣  Add self-reference (relative path only).
   const MANIFEST = 'manifest.json';
-  manifestCopy[MANIFEST] = { src: MANIFEST };
+  const MANIFEST_FILE = `manifest-${platform}.json`;
+  const relativePath = relative(process.cwd(), 
+    resolve(outputPath, MANIFEST_FILE)).replace(/\\/g, '/');  
+  manifestCopy[MANIFEST] = { src: relativePath };
 
   // 4️⃣  Persist manifest.json next to the bundle.
   await writeFile(
-    resolve(outputPath, MANIFEST),
+    resolve(outputPath, MANIFEST_FILE),
     JSON.stringify(manifestCopy, null, 2)
   );
 
@@ -46,7 +51,7 @@ async function generateAssetsManifest(outputPath, assetsJson, platform) {
   const simplified = Object.fromEntries(
     Object.entries(manifestCopy).map(([dest, asset]) => [
       dest,
-      isAbsolute(asset.src) ? asset.src : resolve(outputPath, asset.src),
+      isAbsolute(asset.src) ? asset.src : resolve(asset.src),
     ])
   );
 
